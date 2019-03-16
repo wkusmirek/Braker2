@@ -13,7 +13,7 @@ COPY gm_et_linux_64.tar.gz /
 
 RUN tar -xzf gm_et_linux_64.tar.gz
 
-RUN wget http://bioinf.uni-greifswald.de/augustus/binaries/augustus-3.2.3.tar.gz
+RUN wget http://bioinf.uni-greifswald.de/augustus/binaries/old/augustus-3.2.3.tar.gz
 
 RUN tar -xzf augustus-3.2.3.tar.gz
 
