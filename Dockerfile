@@ -13,9 +13,9 @@ COPY gm_et_linux_64.tar.gz /
 
 RUN tar -xzf gm_et_linux_64.tar.gz
 
-RUN wget http://bioinf.uni-greifswald.de/augustus/binaries/augustus-3.3.2.tar.gz
+RUN wget http://bioinf.uni-greifswald.de/augustus/binaries/augustus-3.2.3.tar.gz
 
-RUN tar -xzf augustus-3.3.2.tar.gz
+RUN tar -xzf augustus-3.2.3.tar.gz
 
 RUN apt-get install bamtools -y -q
 
@@ -35,19 +35,23 @@ RUN cpanm POSIX
 RUN cpanm Scalar::Util::Numeric
 RUN cpanm YAML
 
+RUN wget http://genomethreader.org/distributions/gth-1.7.1-Linux_x86_64-64bit.tar.gz
+RUN tar -zxvf gth-1.7.1-Linux_x86_64-64bit.tar.gz
+
 RUN adduser --disabled-password --gecos '' dockeruser
 RUN mkdir /data
 RUN chown -R dockeruser /data
-RUN chmod a+w -R /augustus-3.3.2/config
+RUN chmod a+w -R /augustus-3.2.3/config
 USER dockeruser
 WORKDIR /data
 
 COPY gm_key_64.gz /
 RUN zcat /gm_key_64.gz > ~/.gm_key
 
+ENV PATH $PATH:/gth-1.7.1-Linux_x86_64-64bit/bin/
 ENV PATH $PATH:/BRAKER_v2.0:/augustus-3.3.2/bin/
-ENV PATH $PATH:/augustus-3.3.2/scripts:/gm_et_linux_64/gmes_petap/
-ENV AUGUSTUS_CONFIG_PATH /augustus-3.3.2/config
+ENV PATH $PATH:/augustus-3.2.3/scripts:/gm_et_linux_64/gmes_petap/
+ENV AUGUSTUS_CONFIG_PATH /augustus-3.2.3/config
 ENV GENEMARK_PATH /gm_et_linux_64/gmes_petap/
 ENV BAMTOOLS_PATH /usr/bin/
 
