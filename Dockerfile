@@ -49,7 +49,7 @@ COPY gm_key_64.gz /
 RUN zcat /gm_key_64.gz > ~/.gm_key
 
 ENV PATH $PATH:/gth-1.7.1-Linux_x86_64-64bit/bin/
-ENV PATH $PATH:/BRAKER_v2.0:/augustus-3.3.2/bin/
+ENV PATH $PATH:/BRAKER_v2.0:/augustus-3.2.3/bin/
 ENV PATH $PATH:/augustus-3.2.3/scripts:/gm_et_linux_64/gmes_petap/
 ENV AUGUSTUS_CONFIG_PATH /augustus-3.2.3/config
 ENV GENEMARK_PATH /gm_et_linux_64/gmes_petap/
